@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>R date:</strong>
+  <%= @work.r_date %>
+</p>
+
+<p>
+  <strong>R time:</strong>
+  <%= @work.r_time %>
+</p>
+
+<%= link_to 'Edit', edit_work_path(@work) %> |
+<%= link_to 'Back', works_path %>

@@ -1,0 +1,40 @@
+// table, th, td {
+//     border: 1px solid black;
+// }
+
+.center{
+    display:block;
+    float: left;
+  }
+
+
+  .center{
+    background-color:rgb(231, 227, 227);
+    
+  height:400px;
+  overflow:auto;
+  overflow-x:hidden;
+  border: 1px solid black;
+}
+
+  .days a {
+    width: 100px;
+    height: 50px;
+    display: inline-block;
+}
+
+.btn{
+  height: 65px;
+  width: 65px; 
+  position:absolute;
+  top: 26px;
+  left: 210px;
+  display: inline-block;
+}
+
+
+.nw{
+  position:absolute;
+  top: 97px;
+  left: 230px;
+}
