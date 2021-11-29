@@ -5,6 +5,7 @@
 .center{
     display:block;
     float: left;
+    overflow:hidden;
   }
 
 
@@ -37,4 +38,10 @@
   position:absolute;
   top: 97px;
   left: 230px;
+}
+
+
+.content {
+  max-width: 500px;
+  margin: auto;
 }

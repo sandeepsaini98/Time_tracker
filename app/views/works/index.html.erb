@@ -1,5 +1,5 @@
 
-<div class=" flex-1 container mx-32 py-15 px-40 "> 
+<div class=" flex-1 container mx-32 py-15 px-40"> 
 
 <% start_date = Date.today %>
 <% current_date = Date.parse(request.query_parameters[:current_date] ) if params[:current_date ]%>
@@ -12,7 +12,6 @@
           <% current_date = Date.today %>
         <%end%>
       <th class="days   py-2 mx-3 px-4 bg-gray-300  border-2 border-gray-700 text-gray-500 text-lg  transition-colors duration-100 transform hover:bg-gray-200 hover:text-grey-100 font-bold focus:border-4 focus:border-gray-300 ">
-        
           <%if current_date == date %> * <% end %> <%= link_to "#{date.strftime("%a")}", works_path(:current_date => date)  %>
           <% @x= current_date %>
 
@@ -23,34 +22,30 @@
   </thead>
   
   <br>
-  <div class="flex">  
+  <div class="flex", style="overflow:auto">  
     <% @works.each do |work| %>
-          <% if current_date == work.r_date%>
-             <td style="text-align:center" ><% x = work.r_time %>
-                 <% hr = x/60 %> <%min = x % 60 %>
-                 <%hr.to_s %><% min.to_s%>
-                 <% out = "#{hr}:#{min}"%>
-                 <li><%= out %></li> 
-             </td>
-            <% end %>
-          <% end %>  
-          
-          </div>    
+      <% if current_date == work.r_date%>
+        <tr>
+            <td style="text-align:center"  ><% x = work.r_time %>
+                <% hr = x/60 %> <%min = x % 60 %>
+                <% hr.to_s %><% min.to_s%>
+                <% out = "#{hr}:#{min}"%>
+                <li><%= out %></li> 
+            </td>
+        </tr>
+      <% end %>
+    <% end %>  
+  </div>    
 </table>
 
     
-<div class="text-center ">    
-  <%=link_to '+', new_work_path(:new_date => @x ,:current_date => Date.today), class: "btn mx-2 bg-green-500 hover:bg-green-700 text-white font-bold py-5 px-4 rounded " %>
-  <p class = "nw">New</p>
-</div>
 
 
+ 
+<%=link_to '+', new_work_path(:new_date => @x ,:current_date => Date.today), class: "btn mx-2 bg-green-500 hover:bg-green-700 text-white font-bold py-5 px-7 rounded " %>
+
+ 
 
 
-
-
-
-
-
-
+  
 

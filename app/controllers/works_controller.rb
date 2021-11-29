@@ -4,8 +4,7 @@ class WorksController < ApplicationController
 
   # GET /works or /works.json
   def index
-    # @current_date = Date.today
-    @works = Work.all
+    @works = Work.all   
   end
 
   # GET /works/1 or /works/1.json
@@ -41,11 +40,12 @@ class WorksController < ApplicationController
     
     @work = Work.new(work_params)
     @var = work_params[:r_time]
-    
+   
     convert_time(@var)
-
+    
     respond_to do |format|
       if @work.save
+       
         format.html { redirect_to works_path([:current_date] => work_params[:r_date]), notice: "Work was successfully created." }
     
         format.json { render :show, status: :created, location: @work }
@@ -81,7 +81,12 @@ class WorksController < ApplicationController
 
   private
 
-    
+    def next_week
+       @viewdate = @viewdate + 7.days 
+
+
+    end
+
 
     # Use callbacks to share common setup or constraints between actions.
     def set_work

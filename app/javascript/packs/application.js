@@ -18,4 +18,8 @@ ActiveStorage.start()
 //     $("td.selected").removeClass("selected");
 //     $(this).addClass("selected");
 // });
+$(".delete-button").click(function() {
+    var id = $(this).attr("id").split("_")[1]
+      $(`#overlay_${id}`).show();
+        });
 

@@ -1,27 +1,142 @@
 <%= form_with(model: work) do |form| %>
-  <% if work.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(work.errors.count, "error") %> prohibited this work from being saved:</h2>
 
-      <ul>
-        <% work.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <body>
+    <div
+      class="min-h-screen flex flex-col items-center justify-center bg-gray-100"
+    >
+      <div
+        class="
+          flex flex-col
+          bg-white
+          shadow-md
+          px-4
+          sm:px-6
+          md:px-8
+          lg:px-10
+          py-8
+          rounded-3xl
+          w-50
+          max-w-md
+        "
+      >
+        <div class="font-medium self-center text-xl sm:text-3xl text-gray-800">
+          Hello User!
+        </div>
+        <div class="mt-4 self-center text-xl sm:text-sm text-gray-800">
+          How much time did you spent on this task?
+        </div>
+
+        <div class="mt-8 ">
+          <form action="#">
+            <div class="flex flex-col mb-5">
+
+              <%= form.label :date, class: "mb-1 text-xs tracking-wide text-gray-600" %>
+               <%= form.date_field :r_date, :value => work.r_date, class: "text-sm
+                    placeholder-gray-500
+                    pl-10
+                    pr-4
+                    rounded-2xl
+                    border border-gray-400
+                    w-full
+                    py-2
+                    focus:outline-none focus:border-blue-400" %>
+
+              <div class="relative">
+                <div
+                  class="
+                    inline-flex
+                    items-center
+                    justify-center
+                    absolute
+                    left-0
+                    top-0
+                    h-full
+                    w-10
+                    text-gray-400
+                  "
+                >
+                  <i class="fas fa-at text-blue-500"></i>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col mb-6">
+                  <%= form.label :time, class: "mb-1 text-xs sm:text-sm tracking-wide text-gray-600" %>
+              <div class="relative">
+                    <%= form.text_field :r_time, class: " text-sm
+                    placeholder-gray-500
+                    pl-10
+                    pr-4
+                    rounded-2xl
+                    border border-gray-400
+                    w-full
+                    py-2
+                    focus:outline-none focus:border-blue-400", placeholder: "00:00" %>  
+              </div>
+            </div>
+
+            <div class="flex w-full">
+              <button
+                type="submit"
+                class="
+                  flex
+                  mt-2
+                  items-center
+                  justify-center
+                  focus:outline-none
+                  text-white text-sm
+                  sm:text-base
+                  bg-blue-500
+                  hover:bg-blue-600
+                  rounded-2xl
+                  py-2
+                  w-full
+                  transition
+                  duration-150
+                  ease-in
+                "
+              >
+                <span class="mr-2 uppercase">Submit</span>
+                <span>
+                  <svg
+                    class="h-6 w-6"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="flex justify-center items-center mt-6">
+        <a
+          href="#"
+          target="_blank"
+          class="
+            inline-flex
+            items-center
+            text-gray-700
+            font-medium
+            text-xs text-center
+          "
+        >
+          <span class="ml-2"
+            >Cancel and go back?
+            <%= link_to 'Back', works_path, class:"text-xs ml-2 text-blue-500 font-semibold" %>
+            </span
+          >
+        </a>
+      </div>
     </div>
-  <% end %>
+  </body>
+</html>
 
-  <div class=""w-full max-w-xs">
-    <%= form.label :date, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= form.date_field :r_date, :value => work.r_date, class: "block text-gray-700 text-sm font-bold mb-2" %>
-  </div>
- 
-  <div class="container field">
-    <%= form.label :time, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= form.text_field :r_time, class: "shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: "00:00" %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<%end%>
