@@ -1,8 +1,21 @@
-<%= form_with(model: work) do |form| %>
+<%= form_with(model: @work) do |form| %>
+
+  <% if @work.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(work.errors.count, "error") %> prohibited this work from being saved:</h2>
+
+      <ul>
+        <% work.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 
   <body>
     <div
-      class="min-h-screen flex flex-col items-center justify-center bg-gray-100"
+      class=" flex flex-col items-center justify-center "
     >
       <div
         class="
@@ -22,7 +35,7 @@
         <div class="font-medium self-center text-xl sm:text-3xl text-gray-800">
           Hello User!
         </div>
-        <div class="mt-4 self-center text-xl sm:text-sm text-gray-800">
+        <div class="mt-4 self-cpathenter text-xl sm:text-sm text-gray-800">
           How much time did you spent on this task?
         </div>
 
@@ -31,7 +44,7 @@
             <div class="flex flex-col mb-5">
 
               <%= form.label :date, class: "mb-1 text-xs tracking-wide text-gray-600" %>
-               <%= form.date_field :r_date, :value => work.r_date, class: "text-sm
+               <%= form.date_field :r_date, :value => @work.r_date=@x, class: "text-sm
                     placeholder-gray-500
                     pl-10
                     pr-4
@@ -130,7 +143,7 @@
         >
           <span class="ml-2"
             >Cancel and go back?
-            <%= link_to 'Back', works_path, class:"text-xs ml-2 text-blue-500 font-semibold" %>
+            <%= link_to 'Back', @works_path, class:"text-xs ml-2 text-blue-500 font-semibold" %>
             </span
           >
         </a>
@@ -138,5 +151,4 @@
     </div>
   </body>
 </html>
-
 <%end%>

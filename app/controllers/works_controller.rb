@@ -5,6 +5,7 @@ class WorksController < ApplicationController
   # GET /works or /works.json
   def index
     @works = Work.all   
+    @work = Work.new(:r_date => params[:new_date])
   end
 
   # GET /works/1 or /works/1.json
@@ -50,7 +51,7 @@ class WorksController < ApplicationController
     
         format.json { render :show, status: :created, location: @work }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to works_path([:current_date] => work_params[:r_date]), notice: "Work was successfully created." } 
         format.json { render json: @work.errors, status: :unprocessable_entity }
       end
     end

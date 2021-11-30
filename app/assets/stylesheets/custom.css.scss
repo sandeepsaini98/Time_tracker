@@ -27,10 +27,9 @@
 .btn{
   height: 65px;
   width: 65px; 
-  position:absolute;
-  top: 26px;
-  left: 210px;
+
   display: inline-block;
+  font-size: 50px;
 }
 
 
@@ -44,4 +43,12 @@
 .content {
   max-width: 500px;
   margin: auto;
+}
+
+.topdiv{
+  overflow: hidden;
+  position: relative;
+}
+.btn{
+  position: absolute; left: 210px; top: 40px;
 }
