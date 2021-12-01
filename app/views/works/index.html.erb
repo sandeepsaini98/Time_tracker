@@ -11,7 +11,7 @@
             <% current_date = Date.today %>
           <%end%>
         <th class="days   py-2 mx-3 px-4 bg-gray-300  border-2 border-gray-700 text-gray-500 text-lg  transition-colors duration-100  transform hover:bg-gray-200 hover:text-grey-100 font-bold focus:border-4 focus:border-gray-300 ">
-            <%if current_date == date %> * <% end %> <%= link_to "#{date.strftime("%a")}", works_path(:current_date => date) %>
+            <%if current_date == date %> * <% end %> <%= link_to "#{date.strftime("%a")} #{date.strftime("%d/%m/%Y")}", works_path(:current_date => date) %>
               <% @x= current_date %>
             <% end %>
           <br>
