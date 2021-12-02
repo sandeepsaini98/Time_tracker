@@ -43,7 +43,6 @@ class WorksController < ApplicationController
     
     @work = Work.new(work_params)
     @var = work_params[:r_time]
-    @work[:task_id] = work_params[:task_id]
    
     convert_time(@var)
     respond_to do |format|
@@ -98,6 +97,6 @@ class WorksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def work_params
-      params.require(:work).permit(:r_date, :r_time, :task_id)
+      params.require(:work).permit(:r_date, :r_time, :task_id, :note)
     end
 end
