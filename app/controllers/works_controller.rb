@@ -6,6 +6,8 @@ class WorksController < ApplicationController
   def index
     @works = Work.all   
     @work = Work.new(:r_date => params[:new_date])
+    # @tasks = Task.all 
+        @task_options = Task.all.map{ |t| [t.title, t.id]} 
   end
 
   # GET /works/1 or /works/1.json
@@ -14,7 +16,7 @@ class WorksController < ApplicationController
 
   # GET /works/new
   def new
-  
+    
     @work = Work.new(:r_date => params[:new_date])
 
   end
@@ -41,9 +43,9 @@ class WorksController < ApplicationController
     
     @work = Work.new(work_params)
     @var = work_params[:r_time]
+    @work[:task_id] = work_params[:task_id]
    
     convert_time(@var)
-    
     respond_to do |format|
       if @work.save
        
@@ -96,6 +98,6 @@ class WorksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def work_params
-      params.require(:work).permit(:r_date, :r_time)
+      params.require(:work).permit(:r_date, :r_time, :task_id)
     end
 end
