@@ -13,18 +13,11 @@
   <% end %>
   <body>
 
-    <%
-=begin%>
- <%= form.select(:task_id, @task_options)%> 
-<%
-=end%>
-
-    
+  <div
+    class=" flex flex-col items-center justify-center "
+  >
     <div
-      class=" flex flex-col items-center justify-center "
-    >
-      <div
-        class="
+      class="
           flex flex-col
           bg-white
           shadow-md
@@ -37,13 +30,12 @@
           w-50
           max-w-md
         "
-      >
-       <div class="mt-8 ">
-          <form action="#">
- 
+    >
+      <div class="mt-8 ">
+        <form action="#">
           <div class="flex flex-col mb-6">
-                  <%= form.label :select, class: "mb-1 text-xs sm:text-sm tracking-wide text-gray-600" %>
-              <div class="ddown
+            <%= form.label :select, class: "mb-1 text-xs sm:text-sm tracking-wide text-gray-600" %>
+            <div class="ddown
               relative text-sm
                     placeholder-gray-500
                     pl-10
@@ -53,14 +45,14 @@
                     w-full
                     py-2
                     focus:outline-none focus:border-blue-400">
-                    <%= form.select(:task_id, @task_options)%>  
-              </div>
+              <%= form.select(:task_id, @task_options) %>
             </div>
+          </div>
 
           <div class="flex flex-col mb-6">
-                  <%= form.label :note, class: "mb-1 text-xs sm:text-sm tracking-wide text-gray-600" %>
-              <div class="relative">
-                    <%= form.text_field :note, class: " text-sm
+            <%= form.label :note, class: "mb-1 text-xs sm:text-sm tracking-wide text-gray-600" %>
+            <div class="relative">
+              <%= form.text_field :note,autocomplete: 'off', class: " text-sm
                     placeholder-gray-500
                     pl-10
                     pr-4
@@ -68,13 +60,13 @@
                     border border-gray-400
                     w-full
                     py-2
-                    focus:outline-none focus:border-blue-400", placeholder: "(optional)" %>  
-              </div>
+                    focus:outline-none focus:border-blue-400", placeholder: "(optional)" %>
             </div>
+          </div>
 
-           <div class="flex flex-col mb-5">
-              <%= form.label :date, class: "mb-1 text-xs tracking-wide text-gray-600" %>
-               <%= form.date_field :r_date, :value => @work.r_date=@x, class: "text-sm
+          <div class="flex flex-col mb-5">
+            <%= form.label :date, class: "mb-1 text-xs tracking-wide text-gray-600" %>
+            <%= form.date_field :r_date,autocomplete: 'off', :value => @work.r_date = @x, class: "text-sm
                     placeholder-gray-500
                     pl-10
                     pr-4
@@ -84,9 +76,9 @@
                     py-2
                     focus:outline-none focus:border-blue-400" %>
 
-              <div class="relative">
-                <div
-                  class="
+            <div class="relative">
+              <div
+                class="
                     inline-flex
                     items-center
                     justify-center
@@ -97,15 +89,15 @@
                     w-10
                     text-gray-400
                   "
-                >
-                  <i class="fas fa-at text-blue-500"></i>
-                </div>
+              >
+                <i class="fas fa-at text-blue-500"></i>
               </div>
             </div>
-            <div class="flex flex-col mb-6">
-                  <%= form.label :time, class: "mb-1 text-xs sm:text-sm tracking-wide text-gray-600" %>
-              <div class="relative">
-                    <%= form.text_field :r_time, class: " text-sm
+          </div>
+          <div class="flex flex-col mb-6">
+            <%= form.label :time, class: "mb-1 text-xs sm:text-sm tracking-wide text-gray-600" %>
+            <div class="relative">
+              <%= form.text_field :r_time, autocomplete: 'off',class: " text-sm
                     placeholder-gray-500
                     pl-10
                     pr-4
@@ -113,14 +105,14 @@
                     border border-gray-400
                     w-full
                     py-2
-                    focus:outline-none focus:border-blue-400", placeholder: "00:00" %>  
-              </div>
+                    focus:outline-none focus:border-blue-400", placeholder: "00:00" %>
             </div>
+          </div>
 
-            <div class="flex w-full">
-              <button
-                type="submit"
-                class="
+          <div class="flex w-full">
+            <button
+              type="submit"
+              class="
                   flex
                   mt-2
                   items-center
@@ -137,10 +129,10 @@
                   duration-150
                   ease-in
                 "
-              >
-                
-                <span class="mr-2 uppercase">Submit</span>
-                <span>
+            >
+
+              <span class="mr-2 uppercase">Submit</span>
+              <span>
                   <svg
                     class="h-6 w-6"
                     fill="none"
@@ -152,35 +144,35 @@
                   >
                     <path
                       d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
+                      />
                   </svg>
                 </span>
-              </button>
-            </div>
-          </form>
-        </div>
+            </button>
+          </div>
+        </form>
       </div>
-      <div class="flex justify-center items-center mt-6">
-        <a
-          href="#"
-          target="_blank"
-          class="
+    </div>
+    <div class="flex justify-center items-center mt-6">
+      <a
+        href="#"
+        target="_blank"
+        class="
             inline-flex
             items-center
             text-gray-700
             font-medium
             text-xs text-center
           "
-        >
+      >
           <span class="ml-2"
-            >Cancel and go back?
-            <%= link_to 'Back', works_path(:current_date => @x), class:"text-xs ml-2 text-blue-500 font-semibold" %>
+          >Cancel and go back?
+            <%= link_to 'Back', works_path(:current_date => @x), class: "text-xs ml-2 text-blue-500 font-semibold" %>
             </span
-          >
-        </a>
-      </div>
+            >
+      </a>
     </div>
+  </div>
   </body>
-</html>
-<%end%>
+  </html>
+<% end %>
 

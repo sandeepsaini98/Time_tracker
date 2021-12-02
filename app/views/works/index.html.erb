@@ -1,67 +1,70 @@
-
-<div class="topdiv container mx-auto mt-14 border-8 border-opacity-0 py-15 px-72" style="overflow-x:auto;"> 
-  <div class="flex1"> 
-  <% start_date = Date.today %>
-  <% current_date = Date.parse(request.query_parameters[:current_date] ) if params[:current_date ]%>
-  <% date_range = (start_date.all_week).to_a %>
-  <table class="center striped hovered main-first-cell" >
-    <thead>
-          <% date_range.each do |date| %>         
-          <% if params[:current_date] == nil%>
-            <% current_date = Date.today %>
-          <%end%>
+<div class="topdiv container mx-auto mt-14 border-8 border-opacity-0 py-15 px-72" style="overflow-x:auto;">
+  <div class="flex1">
+    <% start_date = Date.today %>
+    <% current_date = Date.parse(request.query_parameters[:current_date]) if params[:current_date] %>
+    <% date_range = (start_date.all_week).to_a %>
+    <table class="center striped hovered main-first-cell">
+      <thead>
+      <% date_range.each do |date| %>
+        <% if params[:current_date] == nil %>
+          <% current_date = Date.today %>
+        <% end %>
         <th class="days py-2 mx-3 px-4 bg-gray-300  border-2 border-gray-700 text-gray-500 text-lg  transition-colors duration-100  transform hover:bg-gray-200 hover:text-grey-100 font-bold focus:border-4 focus:border-gray-300 ">
-            <%if current_date == date %> * <% end %> <%= link_to "#{date.strftime("%a")} #{date.strftime("%d/%m/%Y")}", works_path(:current_date => date) %>
-              <% @x= current_date %>
-            <% end %>
-          <br>
-        </th>
-    </thead>
-    <br>
-    
+          <% if current_date == date %> *
+          <% end %> <%= link_to "#{date.strftime("%a")} #{date.strftime("%d/%m/%Y")}", works_path(:current_date => date) %>
+          <% @x = current_date %>
+      <% end %>
+      <br>
+      </th>
+      </thead>
+      <br>
+
       <% @works.each do |work| %>
-        <% if current_date == work.r_date%>
+        <% if current_date == work.r_date %>
           <tr>
-              <td style="text-align:center"  ><% x = work.r_time %>
-                  <% hr = x/60 %> <%min = x % 60 %>
-                  <% hr.to_s %><% min.to_s%>
-                  <% out = "#{hr}:#{min}"%>
-                  <li><%= out %></li> 
-                   <%if work.note !=nil %> <%= work.note %>
-                   <%end%>
-              </td>
+            <td style="text-align:center">
+              <% x = work.r_time %>
+              <% hr = x / 60 %>
+              <% min = x % 60 %>
+              <% hr.to_s %>
+              <% min.to_s %>
+              <% out = "#{hr}:#{min}" %>
+              <li><%= out %></li>
+              <% if work.note != nil %> <%= work.note %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
-      <% end %>   
-  </table>
-</div>
+      <% end %>
+    </table>
+  </div>
 
 
-<div class= "container mx-auto">
-  <button class="btn mx-2 bg-green-500 hover:bg-green-700 text-white font-bold py-0.5 px-3.5 rounded" type="button" onclick="toggleModal('modal-id')">
-  + 
-  </button>
-  <div class="hidden overflow-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">
-    <div class="relative w-auto my-6 mx-auto max-w-3xl">
-      <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-        <div class="relative p-6 flex-auto">
-          <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
+  <div class="container mx-auto">
+    <button class="btn mx-2 bg-green-500 hover:bg-green-700 text-white font-bold py-0.5 px-3.5 rounded" type="button" onclick="toggleModal('modal-id')">
+      +
+    </button>
+    <div class="hidden overflow-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">
+      <div class="relative w-auto my-6 mx-auto max-w-3xl">
+        <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+          <div class="relative p-6 flex-auto">
+            <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
               <%= render "form", work: @work %>
-          </p>
+            </p>
+          </div>
         </div>
       </div>
     </div>
+    <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
+    <script type="text/javascript">
+        function toggleModal(modalID) {
+            document.getElementById(modalID).classList.toggle("hidden");
+            document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
+            document.getElementById(modalID).classList.toggle("flex");
+            document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+        }
+    </script>
   </div>
-  <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
-  <script type="text/javascript">
-    function toggleModal(modalID){
-      document.getElementById(modalID).classList.toggle("hidden");
-      document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
-      document.getElementById(modalID).classList.toggle("flex");
-      document.getElementById(modalID + "-backdrop").classList.toggle("flex");
-    }
-  </script>
-</div>
 </div>
 
 

@@ -4,10 +4,10 @@ class WorksController < ApplicationController
 
   # GET /works or /works.json
   def index
-    @works = Work.all   
+    @works = Work.all
     @work = Work.new(:r_date => params[:new_date])
     # @tasks = Task.all 
-        @task_options = Task.all.map{ |t| [t.title, t.id]} 
+    @task_options = Task.all.map { |t| [t.title, t.id] }
   end
 
   # GET /works/1 or /works/1.json
@@ -16,52 +16,46 @@ class WorksController < ApplicationController
 
   # GET /works/new
   def new
-    
+
     @work = Work.new(:r_date => params[:new_date])
 
   end
 
   # GET /works/1/edit
-  def edit 
-   
+  def edit
+
   end
 
   def convert_time(var1)
     var1 = work_params[:r_time]
-    hr , min = var1.split(":")
-    hr = hr.to_i 
-    min = min.to_i 
+    hr, min = var1.split(":")
+    hr = hr.to_i
+    min = min.to_i
 
-    hr = hr * 60 
-    newtime = hr+min
+    hr = hr * 60
+    newtime = hr + min
     @work[:r_time] = hr + min
-  
+
   end
 
   # POST /works or /works.json
   def create
-    
     @work = Work.new(work_params)
     @var = work_params[:r_time]
-    # @work[:note] = "abdfhkjdh"
-   
     convert_time(@var)
-    byebug
-
     respond_to do |format|
       if @work.save
-       
+
         format.html { redirect_to works_path([:current_date] => work_params[:r_date]), notice: "Work was successfully created." }
-    
+
         format.json { render :show, status: :created, location: @work }
       else
-        format.html { redirect_to works_path([:current_date] => work_params[:r_date]), notice: "Work was successfully created." } 
+        format.html { redirect_to works_path([:current_date] => work_params[:r_date]), notice: "Work was successfully created." }
         format.json { render json: @work.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  
   # PATCH/PUT /works/1 or /works/1.json
   def update
     respond_to do |format|
@@ -86,20 +80,18 @@ class WorksController < ApplicationController
 
   private
 
-    def next_week
-       @viewdate = @viewdate + 7.days 
+  def next_week
+    @viewdate = @viewdate + 7.days
 
+  end
 
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_work
+    @work = Work.find(params[:id])
+  end
 
-
-    # Use callbacks to share common setup or constraints between actions.
-    def set_work
-      @work = Work.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def work_params
-      params.require(:work).permit(:r_date, :r_time, :task_id, :note)
-    end
+  # Only allow a list of trusted parameters through.
+  def work_params
+    params.require(:work).permit(:r_date, :r_time, :task_id, :note)
+  end
 end
