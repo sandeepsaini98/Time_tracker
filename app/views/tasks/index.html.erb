@@ -1,6 +1,8 @@
 <!-- component -->
 
 <!-- Table -->
+
+
 <div class="topdiv container mx-auto mt-14 border-8 border-opacity-0 py-15 px-72" style="overflow-x:auto;">
   <div class="flex1">
 
@@ -60,14 +62,14 @@
   </div>
 
 
-  <div class="container mx-auto">
+  <div id="root" class="task_modal container mx-auto " >
     <button class="btn_task mx-2 bg-green-500 hover:bg-green-700 text-white font-bold py-0.5 px-3.5 rounded" type="button" onclick="toggleModal('modal-id')">
       +
     </button>
-    <div class="hidden overflow-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">
+    <div class="hidden overflow-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id" >
       <div class="relative w-auto my-6 mx-auto max-w-3xl">
         <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-          <div class="relative p-6 flex-auto">
+          <div class="relative p-6 flex-auto" >
             <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
               <%= render "form", task: @task %>
             </p>
@@ -77,6 +79,12 @@
     </div>
     <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
     <script type="text/javascript">
+        document.addEventListener('click', (event) => {
+
+            if(event.target.id == 'modal-id'){
+                toggleModal('modal-id');
+            }
+        })
         function toggleModal(modalID) {
             document.getElementById(modalID).classList.toggle("hidden");
             document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
@@ -86,3 +94,16 @@
     </script>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
