@@ -11,11 +11,13 @@
       </ul>
     </div>
   <% end %>
-
-
   <body>
 
-    <%= form.select(:task_id, @task_options)%>
+    <%
+=begin%>
+ <%= form.select(:task_id, @task_options)%> 
+<%
+=end%>
 
     
     <div
@@ -38,8 +40,39 @@
       >
        <div class="mt-8 ">
           <form action="#">
-            <div class="flex flex-col mb-5">
+ 
+          <div class="flex flex-col mb-6">
+                  <%= form.label :select, class: "mb-1 text-xs sm:text-sm tracking-wide text-gray-600" %>
+              <div class="ddown
+              relative text-sm
+                    placeholder-gray-500
+                    pl-10
+                    pr-4
+                    rounded-2xl
+                    border border-gray-400
+                    w-full
+                    py-2
+                    focus:outline-none focus:border-blue-400">
+                    <%= form.select(:task_id, @task_options)%>  
+              </div>
+            </div>
 
+          <div class="flex flex-col mb-6">
+                  <%= form.label :note, class: "mb-1 text-xs sm:text-sm tracking-wide text-gray-600" %>
+              <div class="relative">
+                    <%= form.text_field :note, class: " text-sm
+                    placeholder-gray-500
+                    pl-10
+                    pr-4
+                    rounded-2xl
+                    border border-gray-400
+                    w-full
+                    py-2
+                    focus:outline-none focus:border-blue-400", placeholder: "(optional)" %>  
+              </div>
+            </div>
+
+           <div class="flex flex-col mb-5">
               <%= form.label :date, class: "mb-1 text-xs tracking-wide text-gray-600" %>
                <%= form.date_field :r_date, :value => @work.r_date=@x, class: "text-sm
                     placeholder-gray-500

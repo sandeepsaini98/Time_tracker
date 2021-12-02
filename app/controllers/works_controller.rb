@@ -43,8 +43,11 @@ class WorksController < ApplicationController
     
     @work = Work.new(work_params)
     @var = work_params[:r_time]
+    # @work[:note] = "abdfhkjdh"
    
     convert_time(@var)
+    byebug
+
     respond_to do |format|
       if @work.save
        
