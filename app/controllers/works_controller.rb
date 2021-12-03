@@ -45,12 +45,10 @@ class WorksController < ApplicationController
     convert_time(@var)
     respond_to do |format|
       if @work.save
-
         format.html { redirect_to works_path([:current_date] => work_params[:r_date]), notice: "Work was successfully created." }
-
         format.json { render :show, status: :created, location: @work }
       else
-        format.html { redirect_to works_path([:current_date] => work_params[:r_date]), notice: "Work was successfully created." }
+        format.html { redirect_to works_path([:current_date] => work_params[:r_date])}
         format.json { render json: @work.errors, status: :unprocessable_entity }
       end
     end

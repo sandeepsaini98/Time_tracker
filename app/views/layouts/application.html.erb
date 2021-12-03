@@ -12,8 +12,9 @@
   </head>
 
   <body class = 'bg-gray-200'	 >
-
-     <%= render 'layouts/navigation'%>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <%= render 'layouts/navigation'%>
 
     <%= yield %>
   </body>
