@@ -90,6 +90,6 @@ class WorksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def work_params
-    params.require(:work).permit(:r_date, :r_time, :task_id, :note)
+    params.require(:work).permit(:r_date, :r_time, :task_id, :note,)
   end
 end
