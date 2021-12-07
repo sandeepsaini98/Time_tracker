@@ -1,2 +1,6 @@
 <h1>  HOME PAGE </h1>
-<%= current_user.username %>
+
+
+<% if logged_in? %>
+  <%= current_user.id %>
+<% end %>
