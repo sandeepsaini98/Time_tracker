@@ -35,6 +35,8 @@
 
           <% @tasks.each do |task| %>
 
+          <% if task.user == current_user %>
+
             <tr>
               <td class="p-2 whitespace-nowrap">
                 <div class="flex items-center">
@@ -52,6 +54,8 @@
                 <div class="text-left font-medium text-green-500"><%= link_to 'Show/Edit', task %></div>
               </td>
             </tr>
+
+          <% end %>
 
           <% end %>
 
