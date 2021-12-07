@@ -7,7 +7,7 @@ class WorksController < ApplicationController
     @works = Work.all
     @work = Work.new(:r_date => params[:new_date])
     # @tasks = Task.all 
-    @task_options = Task.all.map { |t| [t.title, t.id] }
+    @task_options = current_user.tasks.map { |t| [t.title, t.id] }
   end
 
   # GET /works/1 or /works/1.json
